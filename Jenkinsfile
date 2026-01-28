@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-    stage('Run automation') {
+        stage('Run automation') {
             environment {
                 API_CREDS = credentials('api-creds')
             }
