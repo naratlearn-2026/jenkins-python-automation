@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        API_URL = 'https://httpbin.org/basic-auth/dummyuser/dummypass'
+        API_URL = 'https://httpbin.org/basic-auth/admin/admin'
     }
 
     stages {
