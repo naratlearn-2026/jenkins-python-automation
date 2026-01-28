@@ -5,6 +5,10 @@ pipeline {
         }
     }
 
+    environment {
+        API_URL = 'https://httpbin.org/basic-auth/dummyuser/dummypass'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -23,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Run automation') {
+        stage('API Pre-check') {
             environment {
                 API_CREDS = credentials('api-creds')
             }
@@ -40,10 +44,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline succeeded'
+            echo 'API validation succeeded'
         }
         failure {
-            echo 'Pipeline failed'
+            echo 'API validation failed'
         }
     }
 }
