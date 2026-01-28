@@ -23,10 +23,15 @@ pipeline {
             }
         }
 
-        stage('Run automation') {
-            steps {
+    stage('Run automation') {
+            environment {
+                API_CREDS = credentials('api-creds')
+            }
+            looks {
                 sh '''
                     . venv/bin/activate
+                    export API_USERNAME="${API_CREDS_USR}"
+                    export API_PASSWORD="${API_CREDS_PSW}"
                     python src/main.py
                 '''
             }
