@@ -27,7 +27,7 @@ pipeline {
             environment {
                 API_CREDS = credentials('api-creds')
             }
-            looks {
+            steps {
                 sh '''
                     . venv/bin/activate
                     export API_USERNAME="${API_CREDS_USR}"
