@@ -14,13 +14,21 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'pip install --no-cache-dir -r requirements.txt'
+                sh '''
+                    python -m venv venv
+                    . venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Run automation') {
             steps {
-                sh 'python src/main.py'
+                sh '''
+                    . venv/bin/activate
+                    python src/main.py
+                '''
             }
         }
     }
